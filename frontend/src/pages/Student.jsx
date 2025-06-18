@@ -4,7 +4,7 @@ import PollResults from "../components/PollResults";
 import Chat from "../components/Chat";
 import { FaClock } from 'react-icons/fa';
 
-const socket = io("https://intervue-io-assignment.onrender.com");
+const socket = io("https://pollingsystem-tcy7.onrender.com");
 
 const Student = () => {
     const [name, setName] = useState("");

@@ -6,7 +6,7 @@ import Chat from "../components/Chat";
 import PollHistory from "../components/PollHistory";
 import { FaUserMinus } from 'react-icons/fa6';
 
-const socket = io("https://intervue-io-assignment.onrender.com");
+const socket = io("https://pollingsystem-tcy7.onrender.com"); 
 
 const Teacher = () => {
   const [students, setStudents] = useState([]);
