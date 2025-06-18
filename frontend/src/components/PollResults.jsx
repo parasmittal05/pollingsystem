@@ -5,22 +5,34 @@ const PollResults = ({ pollResults }) => {
 
   return (
     <div className="mt-4">
-      <h2 className="text-xl font-bold mb-2 text-black">Poll Results</h2>
+      <h2 className="text-xl font-bold mb-4 text-[#1E293B]">Poll Results</h2>
+
       {totalVotes > 0 ? (
-        <div>
-          {Object.entries(pollResults).map(([option, votes], index) => (
-            <div key={index} className="mb-2">
-              <p>{option}: {votes} votes ({((votes / totalVotes) * 100).toFixed(2)}%)</p>
-              <div className="w-full bg-gray-200 rounded">
-                <div className="bg-black text-white rounded" style={{ width: `${(votes / totalVotes) * 100}%` }}>
-                  &nbsp;
+        <div className="space-y-4">
+          {Object.entries(pollResults).map(([option, votes], index) => {
+            const percentage = (votes / totalVotes) * 100;
+
+            return (
+              <div key={index} className="space-y-1">
+                <div className="flex justify-between items-center text-sm font-medium">
+                  <span className="text-[#1E293B]">{option}</span>
+                  <span className="text-[#6B7280]">
+                    {votes} vote{votes !== 1 ? 's' : ''} ({percentage.toFixed(1)}%)
+                  </span>
+                </div>
+
+                <div className="w-full h-3 bg-gray-100 rounded-full overflow-hidden">
+                  <div
+                    className="h-full bg-orange-400 transition-all duration-500 rounded-full"
+                    style={{ width: `${percentage}%` }}
+                  ></div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       ) : (
-        <p>No results yet.</p>
+        <p className="text-[#6B7280]">No results yet.</p>
       )}
     </div>
   );
